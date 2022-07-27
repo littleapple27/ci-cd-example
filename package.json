@@ -4,7 +4,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "e2e:run": "cypress run",
+    "e2e:open": "cypress open"
   },
   "dependencies": {
     "next": "latest",
