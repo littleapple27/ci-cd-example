@@ -2,7 +2,7 @@
 
 describe("example index page tests", () => {
   beforeEach(() => {
-    cy.visit("/");
+    cy.visit("/js-form");
   });
 
   it("Checks home page render", () => {
