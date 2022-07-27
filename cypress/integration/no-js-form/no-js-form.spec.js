@@ -2,21 +2,10 @@
 
 describe("example index page tests", () => {
   beforeEach(() => {
-    cy.visit("/js-form");
+    cy.visit("/no-js-form");
   });
 
-  it("Checks home page render", () => {
-    cy.get(".Home_container__bCOhY").should("exist");
-    cy.get(".Home_card___LpL1")
-      .should("have.length", 2)
-      .and("have.attr", "href");
-    cy.get(".Home_card___LpL1")
-      .first()
-      .find("h2")
-      .should("have.text", "Form with JavaScript →");
-    cy.get(".Home_card___LpL1")
-      .last()
-      .find("h2")
-      .should("have.text", "Form without JavaScript →");
+  it("tests next form with no js", () => {
+    cy.log('here you go')
   });
 });
