@@ -1,0 +1,9 @@
+name: Cypress Tests
+
+on: [push]
+
+jobs:
+  runCypressTests:
+    name: Run Cypress Tests
+    runs-on: "ubuntu-latest"
+    steps:
