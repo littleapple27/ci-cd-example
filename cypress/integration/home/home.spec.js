@@ -2,11 +2,14 @@
 
 describe("example index page tests", () => {
   beforeEach(() => {
-    cy.visit("http://localhost:3000/");
+    cy.visit("/");
   });
 
   it("Checks home page render", () => {
     cy.get(".Home_container__bCOhY").should("exist");
+  });
+
+  it("Checks js-form and no-js-form links", () => {
     cy.get(".Home_card___LpL1")
       .should("have.length", 2)
       .and("have.attr", "href");
@@ -18,5 +21,5 @@ describe("example index page tests", () => {
       .last()
       .find("h2")
       .should("have.text", "Form without JavaScript →");
-  });
+  })
 });
