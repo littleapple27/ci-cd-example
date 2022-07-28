@@ -2,7 +2,7 @@ name: Approval workflow
 
 on:
   pull_request:
-    types: [review_requested]
+    types: [submitted]
   workflow_run:
     workflows: [Run Cypress Tests]
     types:
