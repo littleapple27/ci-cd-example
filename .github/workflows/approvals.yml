@@ -12,8 +12,8 @@ jobs:
   labelWhenApproved:
     runs-on: ubuntu-latest
     steps:
-      - name: Label when approved
-        uses: pullreminders/label-when-approved-action@master
+      - name: Label approved pull requests
+        uses: abinoda/label-when-approved-action@1.0.5
         env:
           APPROVALS: "1"
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
