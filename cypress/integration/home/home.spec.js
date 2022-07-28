@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
 describe("example index page tests", () => {
-  beforeEach(() => {
+  before(() => {
     cy.visit("/");
   });
 
@@ -9,7 +9,7 @@ describe("example index page tests", () => {
     cy.get(".Home_container__bCOhY").should("exist");
   });
 
-  it("Checks js-form and no-js-form links", () => {
+  it("Checks js-form and no-js-form have text", () => {
     cy.get(".Home_card___LpL1")
       .should("have.length", 2)
       .and("have.attr", "href");
@@ -21,5 +21,17 @@ describe("example index page tests", () => {
       .last()
       .find("h2")
       .should("have.text", "Form without JavaScript →");
-  })
+  });
+
+  it("checks validity of all links on page", () => {
+    cy.get("a").each((link) => {
+      cy.wrap(link)
+        .invoke("attr", "href")
+        .then((href) => {
+          cy.request(href).then((resp) => {
+            expect(resp.status).to.eq(200);
+          });
+        });
+    });
+  });
 });

@@ -1,7 +1,7 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import Link from 'next/link'
-import styles from '../styles/Home.module.css'
+import Head from "next/head";
+import Image from "next/image";
+import Link from "next/link";
+import styles from "../styles/Home.module.css";
 
 export default function Home() {
   return (
@@ -18,8 +18,8 @@ export default function Home() {
         </h1>
 
         <p className={styles.description}>
-          Get started by looking at{' '}
-          <code className={styles.code}>pages/js-form.js</code> and{' '}
+          Get started by looking at{" "}
+          <code className={styles.code}>pages/js-form.js</code> and{" "}
           <code className={styles.code}>pages/no-js-form.js</code>
         </p>
 
@@ -42,12 +42,12 @@ export default function Home() {
 
       <footer className={styles.footer}>
         <a href="https://nextjs.org" target="_blank" rel="noopener noreferrer">
-          Built with Next.js | Powered by{' '}
+          Built with Next.js | Powered by{" "}
           <span className={styles.logo}>
             <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
           </span>
         </a>
       </footer>
     </div>
-  )
+  );
 }
