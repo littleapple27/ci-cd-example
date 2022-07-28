@@ -2,36 +2,36 @@ name: Approval workflow
 
 on:
   pull_request:
-    types: [review_requested]
-  workflow_run:
-    workflows: [Run Cypress Tests]
-    types:
-      - completed
+    types: [ready_for_review]
+  # workflow_run:
+  #   workflows: [Run Cypress Tests]
+  #   types:
+  #     - completed
 
 jobs:
   labelWhenApproved:
     runs-on: ubuntu-latest
     steps:
-      - name: Label when approved
-        uses: pullreminders/label-when-approved-action@master
+      - name: Label approved pull requests
+        uses: abinoda/label-when-approved-action@1.0.5
         env:
           APPROVALS: "1"
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           ADD_LABEL: "approved"
-      - name: Add Label
-        uses: actions-ecosystem/action-add-labels@v1
-        with:
-          labels: automerge
-        if: ${{ steps.runCypress.outcome == 'success' }} && github.event.review.state == 'approved'
+  #     - name: Add Label
+  #       uses: actions-ecosystem/action-add-labels@v1
+  #       with:
+  #         labels: automerge
+  #       if: ${{ steps.runCypress.outcome == 'success' }} && github.event.review.state == 'approved'
 
-  automerge:
-    runs-on: ubuntu-latest
-    needs: labelWhenApproved
-    steps:
-      - id: automerge
-        name: automerge
-        uses: "pascalgn/automerge-action@v0.15.3"
-        env:
-          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-          MERGE_RETRIES: 10
-          MERGE_RETRY_SLEEP: 10000
+  # automerge:
+  #   runs-on: ubuntu-latest
+  #   needs: labelWhenApproved
+  #   steps:
+  #     - id: automerge
+  #       name: automerge
+  #       uses: "pascalgn/automerge-action@v0.15.3"
+  #       env:
+  #         GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+  #         MERGE_RETRIES: 10
+  #         MERGE_RETRY_SLEEP: 10000
