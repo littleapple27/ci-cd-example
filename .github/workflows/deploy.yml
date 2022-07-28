@@ -23,9 +23,10 @@ jobs:
         uses: cypress-io/github-action@v4
         id: runCypress
         with:
-          record: true
-          ci-build-id: '${{ github.sha }}-${{ github.workflow }}-${{ github.event_name }}'
           config: baseUrl=${{steps.waitFor200.outputs.url}}
+          wait-on: ${{steps.waitFor200.outputs.url}}
+          record: true
+          ci-build-id: "${{ github.sha }}-${{ github.workflow }}-${{ github.event_name }}"
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
