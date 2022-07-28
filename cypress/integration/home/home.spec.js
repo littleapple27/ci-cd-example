@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
 describe("example index page tests", () => {
-  beforeEach(() => {
+  before(() => {
     cy.visit("/");
   });
 

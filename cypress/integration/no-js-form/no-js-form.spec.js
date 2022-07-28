@@ -10,7 +10,7 @@ const getInputByLabel = (label) => {
 };
 
 describe("example no-js-form tests", () => {
-  beforeEach(() => {
+  before(() => {
     cy.visit("/no-js-form");
   });
 
