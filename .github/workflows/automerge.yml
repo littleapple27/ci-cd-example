@@ -9,11 +9,13 @@ on:
 
 jobs:
   addAutomergeLabel:
-    - name: Add Automerge lavel
-      uses: actions-ecosystem/action-add-labels@v1
-      if: ${{ (github.event.review.state == 'approved') && (steps.runCypress.outcome == 'success')}}
-      with:
-        labels: automerge
+    runs-on: ubuntu-latest
+    steps:
+      - name: Add Automerge label
+        uses: actions-ecosystem/action-add-labels@v1
+        if: ${{ (github.event.review.state == 'approved') && (steps.runCypress.outcome == 'success')}}
+        with:
+          labels: automerge
 
   automerge:
     runs-on: ubuntu-latest
