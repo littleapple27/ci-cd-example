@@ -22,7 +22,6 @@ describe("example no-js-form tests", () => {
     getInputByLabel("First Name").type("Andrea");
     getInputByLabel("Last Name").type("Legleiter");
     cy.get("button").should("have.text", "Submit").click({ force: true });
-    cy.url().should("be.equal", "http://localhost:3000/api/form");
-    cy.log("All done!");
+    cy.url().should("contain", "/api/form");
   });
 });
