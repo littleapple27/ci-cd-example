@@ -22,6 +22,6 @@ describe("example no-js-form tests", () => {
     getInputByLabel("First Name").type("Andrea");
     getInputByLabel("Last Name").type("Legleiter");
     cy.get("button").should("have.text", "Submit").click({ force: true });
-    cy.url().should("be.equal", Cypress.config("baseUrl") + "api/form");
+    cy.url().should("be.equal", Cypress.config("baseUrl") + "/api/form");
   });
 });
