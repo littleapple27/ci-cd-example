@@ -1,11 +1,6 @@
 name: Approval workflow
 
-on:
-  push:
-    branches:
-      - feature/*
-  pull_request_review:
-    types: [submitted]
+on: pull_request_review
 
 jobs:
   labelWhenApproved:
