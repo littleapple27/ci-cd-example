@@ -1,6 +1,10 @@
 name: Approval workflow
 
 on:
+  push:
+    branches:
+      - main
+      - feature/*
   pull_request_review:
     types: [submitted]
   workflow_run:
