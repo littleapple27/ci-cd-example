@@ -1,16 +1,15 @@
 name: Approval workflow
 
 on:
+  push:
+    branches:
+      - feature/*
   pull_request_review:
     types: [submitted]
-  workflow_run:
-    workflows: [Cypress Tests]
-    types:
-      - completed
 
 jobs:
   labelWhenApproved:
-    if: ${{ github.event.workflow_run.conclusion == 'success' && github.event.review.state == 'approved' }}
+    if: ${{ github.event.review.state == 'approved' }}
     runs-on: ubuntu-latest
     steps:
       - name: Label approved pull requests
