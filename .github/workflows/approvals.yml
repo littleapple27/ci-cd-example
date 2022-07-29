@@ -9,7 +9,6 @@ on:
 
 jobs:
   labelWhenApproved:
-    if: ${{ github.event.review.state == 'approved' }}
     runs-on: ubuntu-latest
     steps:
       - name: Label approved pull requests
