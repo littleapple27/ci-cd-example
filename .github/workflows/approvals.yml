@@ -14,7 +14,7 @@ on:
 
 jobs:
   labelWhenApproved:
-    if: ${{ steps.runCypress.outcome == 'success' }} && github.event.review.state == 'approved'
+    if: ${{ github.event.workflow_run.conclusion == 'success' && github.event.review.state == 'approved' }}
     runs-on: ubuntu-latest
     steps:
       - name: Label approved pull requests
