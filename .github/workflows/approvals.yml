@@ -1,15 +1,16 @@
 name: Approval workflow
 
 on:
-  pull_request:
-    types: [ready_for_review]
-  # workflow_run:
-  #   workflows: [Run Cypress Tests]
-  #   types:
-  #     - completed
+  pull_request_review:
+    types: [submitted]
+  workflow_run:
+    workflows: [Run Cypress Tests]
+    types:
+      - completed
 
 jobs:
   labelWhenApproved:
+    if: ${{ steps.runCypress.outcome == 'success' }} && github.event.review.state == 'approved'
     runs-on: ubuntu-latest
     steps:
       - name: Label approved pull requests
@@ -18,20 +19,3 @@ jobs:
           APPROVALS: "1"
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           ADD_LABEL: "approved"
-  #     - name: Add Label
-  #       uses: actions-ecosystem/action-add-labels@v1
-  #       with:
-  #         labels: automerge
-  #       if: ${{ steps.runCypress.outcome == 'success' }} && github.event.review.state == 'approved'
-
-  # automerge:
-  #   runs-on: ubuntu-latest
-  #   needs: labelWhenApproved
-  #   steps:
-  #     - id: automerge
-  #       name: automerge
-  #       uses: "pascalgn/automerge-action@v0.15.3"
-  #       env:
-  #         GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-  #         MERGE_RETRIES: 10
-  #         MERGE_RETRY_SLEEP: 10000
